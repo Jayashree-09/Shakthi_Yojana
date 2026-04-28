@@ -7,10 +7,13 @@ console.log("ENV CHECK:", process.env.MONGO_URI);
 
 const app = express();
 
-// ✅ CORS — allows both port 3000 and 3001
+const allowedOrigins = process.env.ALLOWED_ORIGINS 
+  ? process.env.ALLOWED_ORIGINS.split(",") 
+  : ["http://localhost:3000", "http://localhost:3001"];
+
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: allowedOrigins,
     credentials: true,
   })
 );
