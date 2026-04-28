@@ -1,0 +1,437 @@
+/* ============================================
+   ALL ORIGINAL STYLES — NOT CHANGED AT ALL
+   ============================================ */
+
+/* Navbar CSS */
+.navbar {
+  background-color: #2563eb;
+  color: white;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Sidebar CSS */
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: #1f2937;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 15px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar button {
+  width: 100%;
+  padding: 10px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background-color: #b91c1c;
+}
+
+/* Table CSS */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f3f4f6;
+}
+
+/* Login Page CSS */
+.login-container {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.login-container h2 {
+  text-align: center;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  margin-left: -10px;
+}
+
+.login-container .btn {
+  width: 40%;
+  padding: 10px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-left: 85px;
+}
+
+/* Register page css */
+.register-container {
+  width: 320px;
+  margin: 100px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.register-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.register-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+.register-container input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+}
+
+.register-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.register-container button:hover {
+  background: #1d4ed8;
+}
+
+.register-container p {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #2563eb;
+}
+
+.register-container p:hover {
+  text-decoration: underline;
+}
+
+/* Reports page css */
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* ✅ always 4 cards in a row */
+  gap: 16px;                              /* ✅ gap between cards */
+  margin-bottom: 24px;
+}
+
+.report-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: left;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border: 1px solid rgba(229, 231, 235, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.report-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.report-card h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.report-card p {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 8px 0 0;
+  color: #1e293b;
+}
+
+.report-card .icon-bg {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  font-size: 64px;
+  opacity: 0.1;
+  transform: rotate(-15deg);
+}
+
+/* ✅ Table responsive */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Tablet: 2 cards per row */
+@media (max-width: 900px) {
+  .reports-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+ 
+/* Mobile: 1 card per row */
+@media (max-width: 480px) {
+  .reports-grid {
+    grid-template-columns: 1fr;
+  }
+  .reports-container {
+    padding: 10px !important;
+  }
+}
+
+/* Settings page css */
+.settings-container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.settings-container h2 {
+  margin-bottom: 15px;
+}
+
+.settings-container label {
+  font-weight: bold;
+}
+
+.settings-container button {
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* AppRoutes */
+.app-layout {
+  display: flex;
+}
+
+.sidebar-container {
+  width: 220px;
+}
+
+.content-container {
+  flex: 1;
+  padding: 20px;
+}
+
+/* User page css */
+.users-container {
+  padding: 20px;
+}
+
+.user-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.user-form input,
+.user-form select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.user-form button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-form button:hover {
+  background-color: #1e40af;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.users-table th {
+  background-color: #f3f4f6;
+}
+
+.users-table button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Action Buttons (Edit + Delete) */
+.users-table td button {
+  padding: 6px 12px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+/* Edit Button */
+.users-table td button:first-child {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.users-table td button:first-child:hover {
+  background-color: #2563eb;
+}
+
+/* Delete Button */
+.users-table td button:last-child {
+  background-color: #ef4444;
+  color: white;
+}
+
+.users-table td button:last-child:hover {
+  background-color: #dc2626;
+}
+
+/* Update Button (when editing) */
+.user-form button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #10b981;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.user-form button:hover {
+  background-color: #059669;
+}
+
+/* Highlight form in edit mode */
+.user-form.edit-mode {
+  border: 2px solid #3b82f6;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f0f9ff;
+}
+
+
+/* ============================================
+   🆕 RESPONSIVE STYLES ADDED BELOW
+   (nothing above changed)
+   ============================================ */
+
+/* Table scroll wrapper for mobile */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile breakpoint */
+@media (max-width: 767px) {
+
+  /* Login — full width on mobile */
+  .login-container {
+    width: 90%;
+    margin: 40px auto;
+    padding: 20px 16px;
+  }
+
+  /* Register — full width on mobile */
+  .register-container {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px 16px;
+  }
+
+  /* Users form — stack vertically */
+  .user-form {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .user-form input,
+  .user-form select,
+  .user-form button {
+    width: 100%;
+  }
+
+  /* Users container padding */
+  .users-container {
+    padding: 12px;
+  }
+
+  /* Table — horizontal scroll on mobile */
+  .users-table {
+    min-width: 500px;
+  }
+
+  /* Settings */
+  .settings-container {
+    padding: 16px;
+    margin: 0 12px;
+  }
+
+  /* Content area */
+  .content-container {
+    padding: 12px;
+  }
+}
