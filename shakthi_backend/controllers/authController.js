@@ -2,7 +2,7 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
-const axios = require("axios");
+// const axios = require("axios");
 
 const otpStore = {};
 
@@ -127,37 +127,37 @@ const sendSuccessEmail = async (user) => {
 };
 
 // ✅ SEND SMS
-const sendSMS = async (phoneNumber, otp) => {
-  try {
-    const apiKey = process.env.FAST2SMS_API_KEY;
+// const sendSMS = async (phoneNumber, otp) => {
+//   try {
+//     const apiKey = process.env.FAST2SMS_API_KEY;
 
-    if (!apiKey || apiKey.trim() === "" || apiKey === "your_fast2sms_api_key_here") {
-      console.log(`⚠️ No SMS API key. OTP: ${otp}`);
-      return false;
-    }
+//     if (!apiKey || apiKey.trim() === "" || apiKey === "your_fast2sms_api_key_here") {
+//       console.log(`⚠️ No SMS API key. OTP: ${otp}`);
+//       return false;
+//     }
 
-    const response = await axios.post(
-      "https://www.fast2sms.com/dev/bulkV2",
-      {
-        route: "otp",
-        variables_values: otp,
-        numbers: phoneNumber,
-      },
-      {
-        headers: {
-          authorization: apiKey.trim(),
-          "Content-Type": "application/json",
-        },
-      }
-    );
+//     const response = await axios.post(
+//       "https://www.fast2sms.com/dev/bulkV2",
+//       {
+//         route: "otp",
+//         variables_values: otp,
+//         numbers: phoneNumber,
+//       },
+//       {
+//         headers: {
+//           authorization: apiKey.trim(),
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
 
-    console.log("✅ SMS sent:", response.data);
-    return true;
-  } catch (err) {
-    console.error("❌ SMS failed:", err.response?.data || err.message);
-    return false;
-  }
-};
+//     console.log("✅ SMS sent:", response.data);
+//     return true;
+//   } catch (err) {
+//     console.error("❌ SMS failed:", err.response?.data || err.message);
+//     return false;
+//   }
+// };
 
 // ─────────────────────────────────────────
 // STEP 1: REGISTER → Send OTP to SMS + Email
@@ -209,21 +209,37 @@ const register = async (req, res) => {
     };
 
     // ✅ Send OTP to both SMS and Email
-    const smsSent = await sendSMS(phoneNumber, otp);
+    // const smsSent = await sendSMS(phoneNumber, otp);
     const emailSent = await sendOTPEmail(email, name, otp);
 
-    console.log(`📱 OTP for ${phoneNumber}: ${otp}`);
-    console.log(`📧 OTP email sent: ${emailSent}`);
+    // console.log(`📱 OTP for ${phoneNumber}: ${otp}`);
+    // console.log(`📧 OTP email sent: ${emailSent}`);
+    console.log(`📧 Resend OTP for ${record.userData.email}: ${otp}`);
 
-    return res.status(200).json({
-      success: true,
-      message: smsSent
-        ? `OTP sent to +91 ${phoneNumber} via SMS and ${email}`
-        : `OTP sent to ${email}. Check your email inbox.`,
-      phoneNumber,
-      email,
-      devOTP: otp,
-    });
+    // return res.status(200).json({
+    //   success: true,
+    //   message: smsSent
+    //     ? `OTP sent to +91 ${phoneNumber} via SMS and ${email}`
+    //     : `OTP sent to ${email}. Check your email inbox.`,
+    //   phoneNumber,
+    //   email,
+    //   devOTP: otp,
+    // });
+    
+  if (emailSent) {
+      return res.status(200).json({
+        success: true,
+        message: `OTP sent to ${email}. Check your email inbox.`,
+        phoneNumber,
+        email,
+        devOTP: otp,
+      });
+    } else {
+      return res.status(500).json({
+        success: false,
+        message: "Failed to send OTP email. Please check your email configuration.",
+      });
+    }
 
   } catch (err) {
     console.error("REGISTER ERROR:", err.message);
@@ -302,7 +318,7 @@ const resendOTP = async (req, res) => {
     otpStore[phoneNumber].expiresAt = Date.now() + 10 * 60 * 1000;
 
     // ✅ Resend to both SMS and email
-    await sendSMS(phoneNumber, otp);
+    // await sendSMS(phoneNumber, otp);
     await sendOTPEmail(record.userData.email, record.userData.name, otp);
 
     console.log(`📱 Resend OTP for ${phoneNumber}: ${otp}`);
