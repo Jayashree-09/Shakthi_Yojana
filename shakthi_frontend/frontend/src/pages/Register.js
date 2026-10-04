@@ -262,24 +262,9 @@ function Register() {
             <div style={{ background: "#f0fdf4", border: "1px solid #86efac", borderRadius: "10px", padding: "14px", marginBottom: "16px", textAlign: "center" }}>
               <p style={{ fontSize: "13px", color: "#166534", marginBottom: "4px" }}>OTP sent to:</p>
               <p style={{ fontWeight: "700", color: "var(--navy)", fontSize: "20px", letterSpacing: "2px" }}>
-                🇮🇳 +91 {form.email}
+              {form.email}
               </p>
             </div>
-
-            {/* ✅ Always show OTP during development */}
-            {/* {devOTP && (
-              <div style={{ background: "#fef3c7", border: "2px solid #f59e0b", borderRadius: "10px", padding: "16px", marginBottom: "16px", textAlign: "center" }}>
-                <p style={{ fontSize: "12px", color: "#92400e", fontWeight: "700", marginBottom: "8px", textTransform: "uppercase", letterSpacing: "1px" }}>
-                  🧪 Testing Mode — Your OTP
-                </p>
-                <p style={{ fontSize: "36px", fontWeight: "800", color: "#92400e", letterSpacing: "10px", fontFamily: "monospace" }}>
-                  {devOTP}
-                </p>
-                <p style={{ fontSize: "11px", color: "#b45309", marginTop: "6px" }}>
-                  This box will be hidden when SMS is working
-                </p>
-              </div>
-            )} */}
 
             <form onSubmit={handleVerifyOTP}>
               <div className="form-group">

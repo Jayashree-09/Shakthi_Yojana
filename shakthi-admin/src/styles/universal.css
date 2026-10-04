@@ -1,437 +1,321 @@
-/* ============================================
-   ALL ORIGINAL STYLES — NOT CHANGED AT ALL
-   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
-/* Navbar CSS */
-.navbar {
-  background-color: #2563eb;
-  color: white;
-  padding: 15px;
-  font-size: 20px;
-  font-weight: bold;
+:root {
+  --primary: #6366f1;
+  --primary-glow: rgba(99, 102, 241, 0.5);
+  --accent: #f59e0b;
+  --bg-color: #f8fafc;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: blur(15px);
+  --radius-xl: 24px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
 }
 
-/* Sidebar CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1;
+  background: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.05) 0px, transparent 50%);
+  filter: blur(60px);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+}
+
+/* App Layout */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
 .sidebar {
-  width: 200px;
+  width: 260px;
   height: 100vh;
-  background-color: #1f2937;
+  position: sticky;
+  top: 0;
+  background: rgba(30, 41, 59, 0.9);
+  backdrop-filter: blur(20px);
   color: white;
-  padding: 20px;
-  text-align: center;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .sidebar ul {
   list-style: none;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.sidebar li {
-  margin-bottom: 15px;
-}
-
-.sidebar a {
-  color: white;
+.sidebar li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.sidebar li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.sidebar li a.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 8px 16px var(--primary-glow);
 }
 
 .sidebar button {
-  width: 100%;
-  padding: 10px;
-  background-color: #dc2626;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  margin-top: auto;
+  padding: 14px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border-radius: 12px;
+  font-weight: 700;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .sidebar button:hover {
-  background-color: #b91c1c;
-}
-
-/* Table CSS */
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.table th, .table td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: left;
-}
-
-.table th {
-  background-color: #f3f4f6;
-}
-
-/* Login Page CSS */
-.login-container {
-  width: 300px;
-  margin: 100px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-
-.login-container h2 {
-  text-align: center;
-}
-
-.login-container input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  margin-left: -10px;
-}
-
-.login-container .btn {
-  width: 40%;
-  padding: 10px;
-  background-color: #2563eb;
+  background: #ef4444;
   color: white;
-  border: none;
-  cursor: pointer;
-  margin-left: 85px;
 }
 
-/* Register page css */
-.register-container {
-  width: 320px;
-  margin: 100px auto;
-  padding: 25px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
+/* Content Container */
+.content-container {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
 }
 
-.register-container h2 {
-  margin-bottom: 20px;
-  color: #333;
+/* Glass Card */
+.glass-card, .report-card, .settings-container, .login-container, .register-container {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
 }
 
-.register-container input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
-  font-size: 14px;
-}
-
-.register-container input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
-}
-
-.register-container button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.register-container button:hover {
-  background: #1d4ed8;
-}
-
-.register-container p {
-  margin-top: 15px;
-  font-size: 14px;
-  color: #2563eb;
-}
-
-.register-container p:hover {
-  text-decoration: underline;
-}
-
-/* Reports page css */
+/* Reports Grid */
 .reports-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* ✅ always 4 cards in a row */
-  gap: 16px;                              /* ✅ gap between cards */
-  margin-bottom: 24px;
-}
-
-.report-card {
-  background: white;
-  padding: 24px;
-  border-radius: 16px;
-  text-align: left;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  border: 1px solid rgba(229, 231, 235, 0.5);
-  position: relative;
-  overflow: hidden;
-}
-
-.report-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
 }
 
 .report-card h3 {
-  margin: 0;
   font-size: 14px;
-  font-weight: 600;
-  color: #64748b;
+  color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
 }
 
 .report-card p {
   font-size: 32px;
-  font-weight: 700;
-  margin: 8px 0 0;
-  color: #1e293b;
+  font-weight: 800;
+  color: var(--text-main);
 }
 
-.report-card .icon-bg {
-  position: absolute;
-  right: -10px;
-  bottom: -10px;
-  font-size: 64px;
-  opacity: 0.1;
-  transform: rotate(-15deg);
-}
-
-/* ✅ Table responsive */
+/* Tables */
 .table-wrapper {
-  width: 100%;
-  overflow-x: auto;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
 }
 
-/* Tablet: 2 cards per row */
-@media (max-width: 900px) {
-  .reports-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
- 
-/* Mobile: 1 card per row */
-@media (max-width: 480px) {
-  .reports-grid {
-    grid-template-columns: 1fr;
-  }
-  .reports-container {
-    padding: 10px !important;
-  }
-}
-
-/* Settings page css */
-.settings-container {
-  max-width: 500px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.settings-container h2 {
-  margin-bottom: 15px;
-}
-
-.settings-container label {
-  font-weight: bold;
-}
-
-.settings-container button {
-  margin-top: 10px;
-  width: 100%;
-}
-
-/* AppRoutes */
-.app-layout {
-  display: flex;
-}
-
-.sidebar-container {
-  width: 220px;
-}
-
-.content-container {
-  flex: 1;
-  padding: 20px;
-}
-
-/* User page css */
-.users-container {
-  padding: 20px;
-}
-
-.user-form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.user-form input,
-.user-form select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.user-form button {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.user-form button:hover {
-  background-color: #1e40af;
-}
-
-.users-table {
+.table, .users-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.users-table th,
-.users-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
+.table th, .users-table th {
+  background: rgba(255, 255, 255, 0.4);
+  padding: 20px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--glass-border);
 }
 
-.users-table th {
-  background-color: #f3f4f6;
+.table td, .users-table td {
+  padding: 20px;
+  border-bottom: 1px solid var(--glass-border);
+  font-size: 15px;
 }
 
-.users-table button {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
+.table tr:last-child td, .users-table tr:last-child td {
+  border-bottom: none;
 }
 
-/* Action Buttons (Edit + Delete) */
-.users-table td button {
-  padding: 6px 12px;
-  margin-right: 6px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 13px;
-  transition: 0.3s;
+.table tr:hover, .users-table tr:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
-/* Edit Button */
-.users-table td button:first-child {
-  background-color: #3b82f6;
-  color: white;
+/* Forms */
+.user-form {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
-.users-table td button:first-child:hover {
-  background-color: #2563eb;
+.user-form input, .user-form select {
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: white;
+  font-family: inherit;
+  font-size: 15px;
+  transition: all 0.3s;
+  flex: 1;
+  min-width: 200px;
 }
 
-/* Delete Button */
-.users-table td button:last-child {
-  background-color: #ef4444;
-  color: white;
+.user-form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-glow);
 }
 
-.users-table td button:last-child:hover {
-  background-color: #dc2626;
-}
-
-/* Update Button (when editing) */
 .user-form button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background-color: #10b981;
+  padding: 12px 30px;
+  background: var(--primary);
   color: white;
-  font-weight: 500;
-  transition: 0.3s;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 16px var(--primary-glow);
+  transition: all 0.3s;
 }
 
 .user-form button:hover {
-  background-color: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px var(--primary-glow);
 }
 
-/* Highlight form in edit mode */
-.user-form.edit-mode {
-  border: 2px solid #3b82f6;
-  padding: 10px;
+/* Buttons */
+.btn-delete {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
   border-radius: 8px;
-  background-color: #f0f9ff;
+  font-weight: 600;
+  cursor: pointer;
 }
 
+.btn-edit {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 8px;
+}
 
-/* ============================================
-   🆕 RESPONSIVE STYLES ADDED BELOW
-   (nothing above changed)
-   ============================================ */
+/* Auth Containers */
+.login-container, .register-container {
+  max-width: 400px;
+  margin: 100px auto;
+  text-align: center;
+}
 
-/* Table scroll wrapper for mobile */
-.table-scroll {
+.login-container h2, .register-container h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.login-container input, .register-container input {
   width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  margin-bottom: 16px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  font-family: inherit;
 }
 
-/* Mobile breakpoint */
-@media (max-width: 767px) {
+.login-container .btn, .register-container button {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px var(--primary-glow);
+}
 
-  /* Login — full width on mobile */
-  .login-container {
-    width: 90%;
-    margin: 40px auto;
-    padding: 20px 16px;
-  }
-
-  /* Register — full width on mobile */
-  .register-container {
-    width: 90%;
-    margin: 30px auto;
-    padding: 20px 16px;
-  }
-
-  /* Users form — stack vertically */
-  .user-form {
+/* Responsive */
+@media (max-width: 768px) {
+  .app-layout {
     flex-direction: column;
-    flex-wrap: wrap;
   }
-
-  .user-form input,
-  .user-form select,
-  .user-form button {
+  
+  .sidebar {
     width: 100%;
+    height: auto;
+    position: relative;
   }
-
-  /* Users container padding */
-  .users-container {
-    padding: 12px;
-  }
-
-  /* Table — horizontal scroll on mobile */
-  .users-table {
-    min-width: 500px;
-  }
-
-  /* Settings */
-  .settings-container {
-    padding: 16px;
-    margin: 0 12px;
-  }
-
-  /* Content area */
+  
   .content-container {
-    padding: 12px;
+    padding: 20px;
+  }
+}
+ding: 12px;
   }
 }

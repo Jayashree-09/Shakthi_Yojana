@@ -4,7 +4,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/global.css";
 
-import { LangProvider } from "./context/LangContext"; // ✅ added
+import { LangProvider } from "./context/LangContext"; 
+// import BottomNav from "./components/BottomNav";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -23,7 +24,7 @@ const ProtectedScanner = () => {
 
 function App() {
   return (
-    <LangProvider> {/* ✅ wraps everything so all components get lang */}
+    <LangProvider>
       <Router>
         <ToastContainer position="top-right" autoClose={3000} />
         <Routes>
@@ -35,6 +36,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        {/* <BottomNav /> */}
       </Router>
     </LangProvider>
   );
